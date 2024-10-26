@@ -1,0 +1,258 @@
+# Python Quick Reference Guide
+
+A comprehensive guide to Python programming fundamentals and best practices.
+
+## Table of Contents
+
+1. [Python Basics](#1-python-basics)
+2. [Variables and Data Structures](#2-variables-and-data-structures)
+3. [Control Flow](#3-control-flow)
+4. [Loops and Iterations](#4-loops-and-iterations)
+5. [Functions](#5-functions)
+6. [Functional Programming](#6-functional-programming)
+
+## 1. Python Basics
+
+### Output and Printing
+```python
+# Basic printing
+print("Hello World")
+print(2 + 3)
+print('Hello', end='')  # Prevents new line after print
+
+# Type checking
+print(type(2 - 0.8))  # Output: <class 'float'>
+```
+
+### Number Operations
+- Power: `2**3` (equals 8)
+- Floor division: `//` (removes decimal part)
+- Type conversion: `int('0b101', 2)` (binary to int)
+
+### Built-in Functions
+```python
+round(3.7)    # Rounds to nearest integer
+abs(-5)       # Returns absolute value
+bin(5)        # Converts to binary -> '0b101'
+```
+
+## 2. Variables and Data Structures
+
+### Variable Assignment
+```python
+# Multiple assignment
+a, b, c = 1, 2, 3
+
+# List unpacking
+a, b, c, *other, d = [1, 2, 3, 4, 5, 7, 8, 9]
+# a = 1, b = 2, c = 3, d = 9, other = [4, 5, 7, 8]
+```
+
+### Strings
+
+#### String Operations
+```python
+# Multi-line strings
+long_string = '''
+    This string can span
+    multiple lines
+'''
+
+# String methods
+len('hello')                  # Length
+'hello'.replace('l', 'w')    # Replace
+'hello'.find('l')            # Find index
+'!'.join(['Hi', 'friend'])   # Join -> 'Hi!friend'
+```
+
+#### String Formatting
+```python
+name, age = "John", 55
+
+# f-strings (recommended)
+print(f'Hi {name}. You are {age} years old.')
+
+# format() method
+print('Hi {}. You are {} years old.'.format(name, age))
+```
+
+#### String Slicing
+```python
+string = "Hello World"
+string[0:5]    # Basic slice
+string[::2]    # With step
+string[-1]     # Last character
+string[::-1]   # Reverse string
+```
+
+### Lists
+
+#### List Operations
+```python
+# Copying lists
+new_cart = amazon_cart[:]        # Slice copy
+new_cart = amazon_cart.copy()    # Method copy
+
+# Adding elements
+list.extend([100, 101])         # Add multiple items
+list.insert(2, 100)            # Add at index
+list.append(100)               # Add to end
+
+# Removing elements
+list.pop()                     # Remove last
+list.pop(index)               # Remove at index
+list.remove(value)            # Remove by value
+list.clear()                  # Remove all
+```
+
+#### List Methods
+```python
+# Finding elements
+list.index(2)              # Find index of 2
+list.index(2, 0, 4)       # Find 2 between indices 0-4
+list.count(2)             # Count occurrences
+
+# Sorting
+sorted(list)              # Return new sorted list
+list.sort()              # Sort in place
+```
+
+### Dictionaries
+```python
+# Basic dictionary
+user = {
+    'name': 'John',
+    'age': 30,
+    'items': [1, 2, 3]
+}
+
+# Methods
+user.get('age')                    # Safe access with optional default
+'age' in user.keys()              # Check key existence
+user.update({'name': 'Jane'})     # Update/add items
+dict(zip(['a', 'b'], [1, 2]))    # Create from two lists
+```
+
+### Sets
+```python
+# Creating sets
+my_set = {1, 2, 3}
+set_from_list = set([1, 2, 3])
+
+# Set operations
+my_set.difference(other_set)
+my_set.intersection(other_set)
+my_set.union(other_set)
+my_set.issubset(other_set)
+```
+
+## 3. Control Flow
+
+### Conditional Statements
+```python
+# If statements
+if condition:
+    statement1
+elif other_condition:
+    statement2
+else:
+    statement3
+
+# Ternary operator
+result = value_if_true if condition else value_if_false
+```
+
+### Truthy/Falsy Values
+```python
+# Truthy examples
+bool('hello')    # True
+bool(5)          # True
+
+# Falsy examples
+bool('')         # False
+bool(0)          # False
+bool(None)       # False
+```
+
+## 4. Loops and Iterations
+
+### For Loops
+```python
+# Basic for loop
+for item in iterable:
+    print(item)
+
+# Range-based loop
+for i in range(0, 100):
+    print(i)
+
+# Enumerate
+for index, value in enumerate(iterable):
+    print(f"{index}: {value}")
+```
+
+## 5. Functions
+
+### Function Definitions
+```python
+# Basic function
+def greet(name="Guest"):
+    return f"Hello, {name}!"
+
+# Multiple parameters
+def function(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
+    pass
+```
+
+### Advanced Parameters
+```python
+# *args (variable positional arguments)
+def sum_all(*args):
+    return sum(args)
+
+# **kwargs (variable keyword arguments)
+def print_all(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+```
+
+## 6. Functional Programming
+
+### Pure Functions
+```python
+# Pure function example
+def multiply_list(numbers):
+    return [num * 2 for num in numbers]
+```
+
+### Built-in Functional Tools
+```python
+# map()
+numbers = [1, 2, 3, 4]
+doubled = list(map(lambda x: x * 2, numbers))
+
+# filter()
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+
+# reduce()
+from functools import reduce
+sum_all = reduce(lambda acc, val: acc + val, numbers, 0)
+```
+
+### List Comprehensions
+```python
+# Basic comprehension
+squares = [x**2 for x in range(10)]
+
+# With condition
+evens = [x for x in range(10) if x % 2 == 0]
+
+# With if-else
+values = [x if x > 0 else 0 for x in numbers]
+```
+
+---
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
